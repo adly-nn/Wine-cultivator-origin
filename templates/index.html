@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wine Origin Predictor</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f3e5f5; }
+        .container { background: white; padding: 40px; max-width: 500px; margin: auto; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #7b1fa2; }
+        label { font-weight: bold; display: block; margin-top: 15px; color: #4a148c; }
+        input { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; margin-top: 25px; background: #8e24aa; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; transition: background 0.3s; }
+        button:hover { background: #6a1b9a; }
+        .result { margin-top: 30px; text-align: center; font-size: 1.4em; font-weight: bold; color: #4a148c; padding: 10px; border-radius: 5px; background-color: #f3e5f5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🍷 Wine Cultivator Predictor</h2>
+        <p style="text-align:center; color:#666;">Enter chemical properties to identify the vineyard.</p>
+        
+        <form method="POST">
+            <label>Alcohol Content</label>
+            <input type="number" step="0.01" name="alcohol" placeholder="e.g. 13.2" required>
+
+            <label>Flavanoids</label>
+            <input type="number" step="0.01" name="flavanoids" placeholder="e.g. 2.03" required>
+
+            <label>Color Intensity</label>
+            <input type="number" step="0.01" name="color" placeholder="e.g. 4.6" required>
+
+            <label>Proline</label>
+            <input type="number" step="1" name="proline" placeholder="e.g. 1000" required>
+
+            <label>OD280/OD315 of Diluted Wines</label>
+            <input type="number" step="0.01" name="dilution" placeholder="e.g. 2.8" required>
+
+            <button type="submit">Identify Cultivator</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
